@@ -1,0 +1,12 @@
+body {
+    background-color: aqua;
+}
+
+.centercontainer {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.div-background {
+    background-color: aquamarine;
+}

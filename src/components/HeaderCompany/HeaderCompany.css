@@ -1,0 +1,33 @@
+#HeaderCompany {
+    background-color: blueviolet;
+    font-size: 62.5%;
+    margin: 0 auto;
+}
+
+#HeaderCompany .d-flex {
+    height: 10em;
+    background-color: brown;
+}
+
+#HeaderCompany .d-flex .col {
+    background-color: aqua;
+}
+
+#HeaderCompany .d-flex .col h1 {
+    color: violet;
+    margin-left: 1em;
+    text-align: left;
+
+}
+
+#HeaderCompany .d-flex .col h3 {
+    color: blue;
+    text-align: right;
+}
+
+#HeaderCompany .d-flex .col img {
+    background-color: blue;
+    width: 10em;
+    margin: 2em 2em;
+    border-radius: 2em;
+}
