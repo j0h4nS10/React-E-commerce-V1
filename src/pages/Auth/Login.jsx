@@ -4,29 +4,21 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './Login.css'
 import { onchangeHandler, setLocalStorageToken } from '../../utils/authFunctions';
+import { loginUser } from '../../services/auth';
 
 function Login() {
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-  const loginUser = async (loginData) => {
-    try {
-      const response = await axios.post('https://simple-server-ochre.vercel.app/login', loginData);
-      const token = response.data.token
-      console.log('response', response, 'token', token)
-      setLocalStorageToken(token)
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  
 
-  return (<><div className="section-signin">
-    <div className="article-signin">
-      <div className="form-signin w-100 m-auto">
-        <div className='centercontainer' style={{ width: 500 }}>
+  return (<>
+  <div className='container' style={{margin: "0 auto"}}>
+    <div className='row row-cols-2 justify-content-center'>
+      <div className=''>
           <Form>
-            <img class="mb-4" src="./assets/img/settings.png" alt="" width="72" height="57" />
+            <img className="mb-4" src="./assets/img/settings.png" alt="" width="72" height="57" />
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control type="email" placeholder="Enter email" onChange={(e) => { onchangeHandler(e, setEmail) }} />
@@ -47,6 +39,6 @@ function Login() {
               loginUser({ email: email, password: password })
             }}>Submit</Button>
           </Form>
-        </div></div></div></div></>);
+        </div></div></div>{/*</div>*/}</>);
 }
 export default Login

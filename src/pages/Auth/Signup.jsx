@@ -1,72 +1,72 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { onchangeHandler, onChangeHandlerForm } from "../../utils/authFunctions"; 
+import { onchangeHandler, onChangeHandlerForm } from "../../utils/authFunctions";
+import { signupUser } from "../../services/auth";
+import { AuthContext } from "../../context/AuthContext";
 
 
 const Signup = () => {
 
     const Navigate = useNavigate();
 
-    const [data, setData] = useState([]);
+    const [data, setData] = useState({});
+    const { token, setToken } = useContext(AuthContext);
 
     const [formValue, setFormValue] = useState({
-        firtName: '',
+        name: '',
         lastName: '',
         email: '',
         password: ''
     });
 
-    const [firstName, setFirstName] = useState();
-    const [lastName, setLastName] = useState();
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    //const [firstName, setFirstName] = useState();
+    //const [lastName, setLastName] = useState();
+    //const [email, setEmail] = useState();
+    //const [password, setPassword] = useState();
 
-    const postUser = async (formValue, setData) => {
-        try {
-            const response = await axios.post('https://simple-server-ochre.vercel.app/register', formValue);
-            setData(response.data);
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    return (<><div className='container' style={{ margin: "0 auto" }}>
+        <div className='row row-cols-2 justify-content-center'>
+            <div className=''>
+                <Form>
+                <img className="mb-4" src="./assets/img/settings.png" alt="" width="72" height="57" />
+                <Form.Group className="mb-3">
+                    <Form.Label>First Name</Form.Label>
+                    <Form.Control type="text" placeholder="Enter Name" id="name" value={formValue.name} onChange={(e) => { onChangeHandlerForm(e, formValue, setFormValue) }} />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Last Name</Form.Label>
+                    <Form.Control type="text" placeholder="Enter Last Name" id="lastName" value={formValue.lastName} onChange={(e) => { onChangeHandlerForm(e, formValue, setFormValue) }} />
+                </Form.Group>
 
-    return (<><Form>
-            <Form.Group className="mb-3" controlId="formBasicFirstName">
-                <Form.Label>First Name</Form.Label>
-                <Form.Control type="text" placeholder="Enter Name" id="firstName" value={formValue.firtName} onChange={(e)=>{onChangeHandlerForm(e, formValue, setFormValue)}} />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicLastName">
-                <Form.Label>Last Name</Form.Label>
-                <Form.Control type="text" placeholder="Enter Last Name" id="lastName" value={formValue.lastName} onChange={(e)=>{onChangeHandlerForm(e, formValue ,setFormValue)}} />
-            </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="email" placeholder="Enter email" id="email" value={formValue.email} onChange={(e) => { onChangeHandlerForm(e, formValue, setFormValue) }} />
+                    <Form.Text className="text-muted">
+                        We'll never share your email with anyone else.
+                    </Form.Text>
+                </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" id="email" value={formValue.email} onChange={(e)=>{onChangeHandlerForm(e,formValue, setFormValue)}} />
-                <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                </Form.Text>
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" id="password" value={formValue.password} onChange={(e)=>{onChangeHandlerForm(e, formValue,setFormValue)}} />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
-            <Button variant="primary" onClick={(e) => {
-                e.preventDefault()
-                console.log(formValue)
-                postUser(formValue,setData)
-                console.log(Data)
-                Navigate('./')
-            }}>Submit</Button>
-        </Form>
-
+                <Form.Group className="mb-3">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" placeholder="Password" id="password" value={formValue.password} onChange={(e) => { onChangeHandlerForm(e, formValue, setFormValue) }} />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Check type="checkbox" label="Check me out" />
+                </Form.Group>
+                <Button variant="primary" onClick={(e) => {
+                    e.preventDefault()
+                    console.log("formValue ", formValue)
+                    signupUser(formValue)
+                    console.log(signupUser)
+                    Navigate('./')
+                }}>Submit</Button>
+            </Form>
+            </div>
+        </div>
+    </div>
     </>)
 }
 

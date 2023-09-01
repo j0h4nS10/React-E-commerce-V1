@@ -2,6 +2,7 @@
 function FooterMain() {
 
     return (<><div className="container">
+        <hr></hr>
         <footer className="py-5">
             <div className="row">
                 <div className="col-6 col-md-2 mb-3">

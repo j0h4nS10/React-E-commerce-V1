@@ -15,9 +15,9 @@ export const onChangeHandlerForm = (e, formValue ,setFormValue) => {
 
 export const setLocalStorageToken = (token) => {
     console.log(token)
-    let Sttoken = JSON.stringify(token)
-    console.log(Sttoken)
-    window.localStorage.setItem('token', Sttoken)
+    //let Sttoken = JSON.stringify(token)
+    //console.log(Sttoken)
+    window.localStorage.setItem('token', token)
 }
 
 export const getLocalStorageToken = () => {
