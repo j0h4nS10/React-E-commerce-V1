@@ -13,7 +13,7 @@ function NavbarMain({ setExpanded, expanded, handleShow, companyName }) {
   <div>
     <Navbar expand="md" expanded={expanded} className="bg-body-tertiary">
       <Container fluid style={{width: "90%"}}>
-        <Navbar.Brand href="#" style={{ order: "-2" }}>{companyName}</Navbar.Brand>
+        <Navbar.Brand href="/home" style={{ order: "-2" }}>{companyName}</Navbar.Brand>
         <div>
           <Button variant="primary" onClick={handleShow} className="me-2">Cart</Button>
           <Navbar.Toggle aria-controls="navbarScroll" onClick={() => setExpanded(expanded ? false : "expanded")} />
@@ -49,8 +49,8 @@ function NavbarMain({ setExpanded, expanded, handleShow, companyName }) {
             <Button variant="outline-success">Search</Button>
 </Form>*/}
           <Nav>
-            <Button title='Log In' as={Link} to='login'>Log In</Button>
-            <Button title='Sign Up' as={Link} to='signup'>Sign Up</Button>
+            <Button title='Log In' as={Link} to='/login'>Log In</Button>
+            <Button title='Sign Up' as={Link} to='/signup'>Sign Up</Button>
           </Nav>
         </Navbar.Collapse>
       </Container>

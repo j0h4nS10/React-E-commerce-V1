@@ -7,7 +7,7 @@ const ButtonWrapper = ({ showSpinner, amount }) => {
     const style = {"layout":"vertical"};
     const [{ isPending }] = usePayPalScriptReducer();
     // This value is from the props in the UI
-    
+    console.log(showSpinner, amount)    
 
 return (<>
 
@@ -15,7 +15,8 @@ return (<>
             <PayPalButtons
                 style={style}
                 disabled={false}
-                forceReRender={[style]}
+                //forceReRender={[style]}
+                forceReRender={[amount,"USD",style]}
                 fundingSource={undefined}
                 createOrder={async (data, actions) => {
                     return actions.order
@@ -23,8 +24,7 @@ return (<>
                         purchase_units: [
                           {
                             amount: {
-                              value: amount,
-                              currency_code: 'USD'
+                              value: amount
                             },
                           },
                         ],

@@ -14,6 +14,7 @@ import { AuthContext } from '../../context/AuthContext'
 import { CartContext } from '../../context/CartContext'
 import { ProductContext } from '../../context/ProductContext'
 
+/*
 const CardsData = [{
     nameProduct: "Office 365 Home edition",
     img: "https://cdn-icons-png.flaticon.com/512/2415/2415292.png",
@@ -32,7 +33,7 @@ const CardsData = [{
     description: `License Office 365 Home edition with lifetime, with out support, his principal use ist for a 
     home costumer.`,
     price: 30
-}]
+}]*/
 
 const carouselData = [{
     src: "https://imgs.search.brave.com/DhZ08alk6eRZuS4j5NkvQTGR9ENMJvCqYfdM9L0QqQg/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9idXJz/dC5zaG9waWZ5Y2Ru/LmNvbS9waG90b3Mv/dGFubmVkLXNhbmQt/ZHVuZXMtc3Vycm91/bmRlZC1hbi1vcGVu/LXJlc2Vydm9pci5q/cGc_d2lkdGg9MTAw/MCZmb3JtYXQ9cGpw/ZyZleGlmPTAmaXB0/Yz0w",
@@ -63,14 +64,6 @@ const HomePage = () => {
     const { token, setMyToken } = useContext(AuthContext);
     const { cart, setMyCart } = useContext(CartContext);
 
-    useEffect(() => {
-        const ListProducts = async () => {
-            const { data: { products: productsA } } = await axios.get(import.meta.env.VITE_API_URI_PRODUCT)
-            console.log("home page data", productsA)
-            setMyProducts(productsA)
-        }
-        ListProducts()
-    }, []);
 
     return (<>
         <HeaderCompany />

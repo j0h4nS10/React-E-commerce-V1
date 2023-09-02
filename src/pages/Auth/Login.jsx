@@ -5,8 +5,10 @@ import Form from 'react-bootstrap/Form';
 import './Login.css'
 import { onchangeHandler, setLocalStorageToken } from '../../utils/authFunctions';
 import { loginUser } from '../../services/auth';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -33,10 +35,13 @@ function Login() {
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
               <Form.Check type="checkbox" label="Check me out" />
             </Form.Group>
-            <Button variant="primary" type="submit" onClick={(e) => {
+            <Button variant="primary" type="submit" onClick={async(e) => {
               e.preventDefault()
               console.log(email, password)
-              loginUser({ email: email, password: password })
+              const response = await loginUser({ email: email, password: password });
+              {(localStorage.getItem('token')) ?
+              navigate("/")
+              : console.log("error")}
             }}>Submit</Button>
           </Form>
         </div></div></div>{/*</div>*/}</>);

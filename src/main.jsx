@@ -16,9 +16,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <ProductProvider>
         <CartProvider>
         <PayPalScriptProvider options={{ 
-          clientId: 'AWxeRnWuoRvfaROUn8cSo8L0luENOIrTvm7QG_Q4CUs37cm7SdMuKjg1tLuU3504c2rn68vQevoR_QuK',
-          components: 'buttons',
-          currency: 'USD' }}>
+          clientId: import.meta.env.VITE_CLIENT_ID,
+          //components: 'buttons',
+          //currency: 'USD' 
+        }}>
           <App />
         </PayPalScriptProvider>
           
