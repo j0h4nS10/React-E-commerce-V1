@@ -23,19 +23,23 @@ function ServicesPage() {
 
     //console.log(products)
     const paramstyped = useParams();
-    const [params, setParams] = useState('true');
 
-    console.log(params)
+    console.log(paramstyped)
+    const [params, setParams] = useState([]);
+    
+    console.log("params", params)
 
     useEffect(() => { setParams(paramstyped.params) }, []);
 
     const Navigate = useNavigate();
+    
+    console.log("parametros", params)
 
     console.log("productos", products)
     //console.log(params, paramstyped)
     if (params) {
-        const aliarrayfragment = async () => await products.find(element => element.params == params)
-
+        const aliarrayfragment = async () => await products.find(element => element._id = params)
+        console.log(aliarrayfragment)
         return (<><HeaderCompany />
             <NavbarMain setExpanded={setExpanded} expanded={expanded} handleShow={handleShow} companyName="Company" />
             <AsideMenu show={show} handleClose={handleClose} placement="end" name="end" cart={cart}>
@@ -73,7 +77,8 @@ function ServicesPage() {
                         {products.map((element, index) => {
                             return (<>
                                 <div key={index} className="col-md-6 mt-2 mb-2">
-                                    <div className="h-100 p-5 text-bg-light rounded-3"><div style={{ width: "202px", margin: "0 auto" }} >
+                                    <div className="h-100 p-5 text-bg-light rounded-3">
+                                        <div style={{ width: "202px", margin: "0 auto" }} >
                                         <img src={element.img} style={{ width: "300px" }} />
                                     </div>
                                         <div>

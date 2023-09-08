@@ -51,12 +51,12 @@ function FooterMain() {
                 </div>
             </div>
 
-            <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+            <div className="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
                 <p>© 2023 Company, Inc. All rights reserved.</p>
-                <ul class="list-unstyled d-flex">
-                    <li className="ms-3"><a className="link-body-emphasis" href="#"><svg className="bi" width="24" height="24"><use xlink: href="#twitter"></use></svg></a></li>
-                    <li className="ms-3"><a className="link-body-emphasis" href="#"><svg className="bi" width="24" height="24"><use xlink: href="#instagram"></use></svg></a></li>
-                    <li className="ms-3"><a className="link-body-emphasis" href="#"><svg className="bi" width="24" height="24"><use xlink: href="#facebook"></use></svg></a></li>
+                <ul className="list-unstyled d-flex">
+                    <li className="ms-3"><a className="link-body-emphasis" href="#"><svg className="bi" width="24" height="24"><use href=""></use></svg></a></li>
+                    <li className="ms-3"><a className="link-body-emphasis" href="#"><svg className="bi" width="24" height="24"><use href="#instagram"></use></svg></a></li>
+                    <li className="ms-3"><a className="link-body-emphasis" href="#"><svg className="bi" width="24" height="24"><use href="#facebook"></use></svg></a></li>
                 </ul>
             </div>
         </footer>

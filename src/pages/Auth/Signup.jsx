@@ -6,6 +6,9 @@ import Form from 'react-bootstrap/Form';
 import { onchangeHandler, onChangeHandlerForm } from "../../utils/authFunctions";
 import { signupUser } from "../../services/auth";
 import { AuthContext } from "../../context/AuthContext";
+import HeaderCompany from "../../components/HeaderCompany/HeaderCompany";
+import NavbarMain from "../../components/NavbarMain/NavbarMain";
+import FooterMain from "../../components/FooterMain/FooterMain";
 
 
 const Signup = () => {
@@ -27,8 +30,8 @@ const Signup = () => {
     //const [email, setEmail] = useState();
     //const [password, setPassword] = useState();
 
-    return (<><div className='container' style={{ margin: "0 auto" }}>
-        <div className='row row-cols-2 justify-content-center'>
+    return (<><HeaderCompany></HeaderCompany><NavbarMain></NavbarMain><div className='container' style={{ margin: "0 auto" }}>
+        <div className='row row-cols-2 justify-content-center mt-5'>
             <div className=''>
                 <Form>
                     <img className="mb-4" src="./assets/img/settings.png" alt="" width="72" height="57" />
@@ -62,15 +65,15 @@ const Signup = () => {
                         const response = await signupUser(formValue)
                         {
                             (localStorage.getItem('token')) ?
-                            navigate("/")
-                            : console.log("error")
+                                navigate("/")
+                                : console.log("error")
                         }
                         console.log(signupUser)
                     }}>Submit</Button>
                 </Form>
             </div>
         </div>
-    </div>
+    </div><FooterMain></FooterMain>
     </>)
 }
 

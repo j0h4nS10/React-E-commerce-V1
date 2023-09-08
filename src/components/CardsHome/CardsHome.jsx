@@ -1,10 +1,9 @@
 import { useContext } from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 import { ProductContext } from '../../context/ProductContext'
 import { CartContext } from '../../context/CartContext';
-
-
 
 function Cards({ props }) {
 
@@ -30,7 +29,7 @@ function Cards({ props }) {
                                 <Card.Text>{element.description}
                                     <Card.Text><span>price: </span>{element.price} <span> usd</span></Card.Text>
                                 </Card.Text>
-                                <Button variant="primary">Show more</Button><br />
+                                <Button variant="primary" as={Link} to={"/services/"+element._id}>Show more</Button><br />
                                 <Button variant="secondary" onClick={() => { addProduct({
                                     _id: element._id, nameProduct: element.nameProduct, 
                                     description: element.description, price: element.price, 

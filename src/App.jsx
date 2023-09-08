@@ -13,6 +13,7 @@ function App() {
       localStorage.getItem('token') ? localStorage.getItem('token') : null
     );
   }, []);
+  /*
   useEffect(() => {
     if (token)
       axios
@@ -22,7 +23,7 @@ function App() {
           },
         })
         .then((data) => console.log(data));
-  }, [token]);
+  }, [token]);*/
 
   return (<><NavigationRouter>
   </NavigationRouter></>

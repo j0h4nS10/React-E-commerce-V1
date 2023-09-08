@@ -5,9 +5,10 @@ import ButtonWrapper from "../PayPal/ButtonWrapper";
 import HeaderCompany from "../HeaderCompany/HeaderCompany";
 import NavbarMain from "../NavbarMain/NavbarMain";
 import FooterMain from "../FooterMain/FooterMain";
-
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 const Checkout = () => {
+    const currency = "USD";
     const [expanded, setExpanded] = useState(false);
     const handleShow = () => setShow(true);
 
@@ -52,7 +53,7 @@ const Checkout = () => {
                 <tr>
                     <td></td>
                     <td>Total</td>
-                    <td style={{fontweight: "bold"}}>
+                    <td style={{ fontweight: "bold" }}>
                         {sum.reduce(function (a, b) { return a + b; }, 0)}</td>
                     <td>{sumItems.reduce(function (a, b) { return a + b; }, 0)}</td>
                 </tr>
@@ -67,17 +68,25 @@ const Checkout = () => {
         return <h5>Empty</h5>;
     }
 
-    return (<><HeaderCompany />
+    return (<>
+    <PayPalScriptProvider options={{
+        "client-id": import.meta.env.VITE_CLIENT_ID,
+        //components: 'buttons',
+        //currency: 'USD' 
+    }}><HeaderCompany />
+    {console.log(import.meta.env.VITE_CLIENT_ID)}
         <NavbarMain setExpanded={setExpanded} expanded={expanded} handleShow={handleShow} companyName="Company" />
         <div className='container' style={{ margin: "0 auto" }}>
             <div className='row row-cols-8 justify-content-center'>
                 <div className='mt-2'>
                     {showCart()}
                     <div className="row-cols-4 justify-content-end">
-                        <ButtonWrapper showSpinner={false} amount={sum.reduce(function (a, b) { return a + b; }, 0)}></ButtonWrapper>
+                        <ButtonWrapper showSpinner={false} currency={currency}></ButtonWrapper>
                     </div>
                 </div></div></div>
         <FooterMain />
+    </PayPalScriptProvider>
+
     </>)
 }
 

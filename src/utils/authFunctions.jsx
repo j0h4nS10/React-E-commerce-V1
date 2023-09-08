@@ -51,6 +51,7 @@ export const getApiUser = async (token) => {
     }
 };
 
+/*
 
 export const setInfotoupdate = async (name, email, datetime, table, setName, setEmail, setDatetime, setTable) => {
     await setName(name)
@@ -90,3 +91,4 @@ export const deleteUser = async (userCollection, id, data, setData) => {
     await deleteDoc(userDoc)
 }
 
+*/

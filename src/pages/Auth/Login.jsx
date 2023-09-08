@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './Login.css'
 import { onchangeHandler, setLocalStorageToken } from '../../utils/authFunctions';
 import { loginUser } from '../../services/auth';
 import { useNavigate } from 'react-router-dom';
+import HeaderCompany from '../../components/HeaderCompany/HeaderCompany';
+import NavbarMain from '../../components/NavbarMain/NavbarMain';
+import FooterMain from '../../components/FooterMain/FooterMain';
 
 function Login() {
   const navigate = useNavigate();
@@ -15,9 +17,10 @@ function Login() {
 
   
 
-  return (<>
+  return (<><HeaderCompany></HeaderCompany>
+  <NavbarMain></NavbarMain>
   <div className='container' style={{margin: "0 auto"}}>
-    <div className='row row-cols-2 justify-content-center'>
+    <div className='row row-cols-2 justify-content-center mt-5'>
       <div className=''>
           <Form>
             <img className="mb-4" src="./assets/img/settings.png" alt="" width="72" height="57" />
@@ -44,6 +47,6 @@ function Login() {
               : console.log("error")}
             }}>Submit</Button>
           </Form>
-        </div></div></div>{/*</div>*/}</>);
+        </div></div></div>{/*</div>*/}<FooterMain></FooterMain></>);
 }
 export default Login

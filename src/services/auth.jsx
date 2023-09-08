@@ -1,8 +1,6 @@
 import axios from 'axios'
 import { setLocalStorageToken } from '../utils/authFunctions';
 
-
-
 export const loginUser = async (loginData) => {
 
     try {
@@ -10,6 +8,7 @@ export const loginUser = async (loginData) => {
       const token = response.data.data.token
       console.log('response Login', response, 'token Login', token)
       setLocalStorageToken(token)
+      localStorage.setItem("userid",response.data.data.info.userid)
       return token
     } catch (error) {
       console.log(error);
