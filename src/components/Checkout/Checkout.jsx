@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { CartContext } from "../../context/CartContext";
 import Table from 'react-bootstrap/Table';
 import ButtonWrapper from "../PayPal/ButtonWrapper";
@@ -9,6 +9,8 @@ import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 const Checkout = () => {
     const currency = "USD";
+    const [amount, setAmount ] = useState('');
+    
     const [expanded, setExpanded] = useState(false);
     const handleShow = () => setShow(true);
 
@@ -27,6 +29,8 @@ const Checkout = () => {
         });
         return productObject;
     }
+
+    //const amount = sumItems.reduce(function (a, b) { return a + b; }, 0);
 
     const listCart = () => {
         const productObject = listProductObject();
@@ -55,6 +59,7 @@ const Checkout = () => {
                     <td>Total</td>
                     <td style={{ fontweight: "bold" }}>
                         {sum.reduce(function (a, b) { return a + b; }, 0)}</td>
+                        
                     <td>{sumItems.reduce(function (a, b) { return a + b; }, 0)}</td>
                 </tr>
             </tbody>
@@ -68,20 +73,21 @@ const Checkout = () => {
         return <h5>Empty</h5>;
     }
 
+    useEffect( ()=>{setAmount(sum.reduce(function (a, b) { return a + b; }, 0))},[sum])
+
     return (<>
     <PayPalScriptProvider options={{
         "client-id": import.meta.env.VITE_CLIENT_ID,
         //components: 'buttons',
         //currency: 'USD' 
     }}><HeaderCompany />
-    {console.log(import.meta.env.VITE_CLIENT_ID)}
         <NavbarMain setExpanded={setExpanded} expanded={expanded} handleShow={handleShow} companyName="Company" />
         <div className='container' style={{ margin: "0 auto" }}>
             <div className='row row-cols-8 justify-content-center'>
                 <div className='mt-2'>
                     {showCart()}
                     <div className="row-cols-4 justify-content-end">
-                        <ButtonWrapper showSpinner={false} currency={currency}></ButtonWrapper>
+                        <ButtonWrapper showSpinner={false} currency={currency} amount={amount}></ButtonWrapper>
                     </div>
                 </div></div></div>
         <FooterMain />

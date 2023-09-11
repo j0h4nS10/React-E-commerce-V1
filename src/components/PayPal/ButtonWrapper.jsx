@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
+import Modaltext from "../Modal/modal";
 
 /*const currency = "USD";
 const amount = 20;
@@ -61,14 +62,14 @@ return (<>
 export default ButtonWrapper */
 
 
-const amount = "2";
+//const amount = "2";
 
-const currency = "USD";
+//const currency = "USD";
 
 const style = { "layout": "vertical" };
 
 
-const ButtonWrapper = ({ currency, showSpinner }) => {
+const ButtonWrapper = ({ currency, showSpinner, amount }) => {
 
   const [{ options, isPending }, dispatch] = usePayPalScriptReducer(); 
 
@@ -142,9 +143,8 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
       onApprove={function (data, actions) {
 
         return actions.order.capture().then(function () {
-
-          // Your code here after capture the order 
-
+          // Your code here after capture the order|
+          alert("Purchase Completed");
         });
 
       }}
