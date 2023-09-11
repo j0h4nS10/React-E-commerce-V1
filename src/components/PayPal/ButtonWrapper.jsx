@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
-import Modaltext from "../Modal/modal";
+
 
 /*const currency = "USD";
 const amount = 20;
