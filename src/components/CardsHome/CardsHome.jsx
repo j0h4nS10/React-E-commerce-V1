@@ -16,8 +16,9 @@ function Cards({ props }) {
         <h1>Out Products</h1>
         <hr></hr>
         {/*row-cols-1 row-cols-lg-3 */}
-        <div className="" style={{ margin: "0 auto" }}>
-            <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 '>
+        <div className="row" style={{ margin: "0 auto" }}>
+            {/*row row-cols-1 row-cols-lg-2 row-cols-lg-3 */}
+            <div className='row row-cols-1 row-cols-lg-2 row-cols-lg-3'>
                 {products.map((element, index) => {
                     return (<div className='col'>
                         <Card key={index} className="text-center" style={{ margin: 5 }}>

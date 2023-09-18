@@ -14,6 +14,7 @@ function ServicesPage() {
 
     const { products, setMyProducts } = useContext(ProductContext)
     const { cart, setMyCart } = useContext(CartContext);
+
     //offcanvas
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -26,80 +27,89 @@ function ServicesPage() {
 
     console.log(paramstyped)
     const [params, setParams] = useState([]);
-    
+    const [selectProduct, setSelectProduct] = useState([]);
+
     console.log("params", params)
 
     useEffect(() => { setParams(paramstyped.params) }, []);
 
+    useEffect(() => {
+            const findInArray = async () => {
+                const findProduct = await products.find(element => element._id == params)
+                console.log(findProduct)
+                setSelectProduct(findProduct)
+            }
+        }, [])
+
     const Navigate = useNavigate();
-    
+
     console.log("parametros", params)
 
     console.log("productos", products)
     //console.log(params, paramstyped)
-    if (params) {
-        const aliarrayfragment = async () => await products.find(element => element._id = params)
-        console.log(aliarrayfragment)
-        return (<><HeaderCompany />
-            <NavbarMain setExpanded={setExpanded} expanded={expanded} handleShow={handleShow} companyName="Company" />
-            <AsideMenu show={show} handleClose={handleClose} placement="end" name="end" cart={cart}>
-            </AsideMenu><div className="container my-5">
-                <div className="row align-items-md-stretch">
-                    <div className="col-md-6 mt-2 mb-2">
-                        <div className="p-5 text-bg-light rounded-3">
-                            <div >
-                                <img src={aliarrayfragment.img} />
-                            </div>
+    if (params) { 
+
+    //console.log(findInArray)
+    return (<><HeaderCompany />
+        <NavbarMain setExpanded={setExpanded} expanded={expanded} handleShow={handleShow} companyName="Company" />
+        <AsideMenu show={show} handleClose={handleClose} placement="end" name="end" cart={cart}>
+        </AsideMenu><div className="container my-5">
+            <div className="row align-items-md-stretch">
+                <div className="col-md-6 mt-2 mb-2">
+                    <div className="p-5 text-bg-light rounded-3">
+                        <div >
+                            <img src={selectProduct.img} style={{ width: "400px" }} />
                         </div>
                     </div>
-                    <div className="col-md-6 mt-2 mb-2">
-                        <div className="h-100 p-5 text-bg-light rounded-3">
-                            <div>
-                                <h1>{aliarrayfragment.nameProduct}</h1>
-                                <p>{aliarrayfragment.description}</p>
-                                <p>{aliarrayfragment.price}</p>
-                            </div>
-                            <div className="align-items-end">
-                                <Button onClick={() => { Navigate(-1) }}>Go Back</Button>
-                            </div>
+                </div>
+                <div className="col-md-6 mt-2 mb-2">
+                    <div className="h-100 p-5 text-bg-light rounded-3">
+                        <div>
+                            <h1>{selectProduct.nameProduct}</h1>
+                            <p>{selectProduct.description}</p>
+                            <p>{selectProduct.price}</p>
+                        </div>
+                        <div className="align-items-end">
+                            <Button onClick={() => { Navigate(-1) }}>Go Back</Button>
                         </div>
                     </div>
                 </div>
             </div>
-        </>)
-    } else {
-        return (<><HeaderCompany />
-            <NavbarMain setExpanded={setExpanded} expanded={expanded} handleShow={handleShow} companyName="Company" />
-            <AsideMenu show={show} handleClose={handleClose} placement="end" name="end" cart={cart}>
-            </AsideMenu><div>
-                <div className="container my-5">
-                    <div className="row align-items-md-stretch">
-                        {products.map((element, index) => {
-                            return (<>
-                                <div key={index} className="col-md-6 mt-2 mb-2">
-                                    <div className="h-100 p-5 text-bg-light rounded-3">
-                                        <div style={{ width: "202px", margin: "0 auto" }} >
+        </div>
+    </>)
+} else {
+    return (<><HeaderCompany />
+        <NavbarMain setExpanded={setExpanded} expanded={expanded} handleShow={handleShow} companyName="Company" />
+        <AsideMenu show={show} handleClose={handleClose} placement="end" name="end" cart={cart}>
+        </AsideMenu><div>
+            <div className="container my-5">
+                <div className="row align-items-md-stretch">
+                    {products.map((element, index) => {
+                        return (<>
+                            <div key={index} className="col-md-6 mt-2 mb-2">
+                                <div className="h-100 p-5 text-bg-light rounded-3">
+                                    <div style={{ width: "202px", margin: "0 auto" }} >
                                         <img src={element.img} style={{ width: "300px" }} />
+                                    </div>{console.log("ID", element._id)}
+                                    <div>
+                                        <h1>{element.nameProduct}</h1>
+                                        <p>{element.description}</p>
+                                        <p>{element.price}</p>
                                     </div>
-                                        <div>
-                                            <h1>{element.nameProduct}</h1>
-                                            <p>{element.description}</p>
-                                            <p>{element.price}</p>
-                                        </div>
-                                        <div className="align-items-end">
-                                            <Link to="">
-                                                <Button>Get more info</Button></Link>
-                                        </div>
+                                    <div className="align-items-end">
+
+                                        <Button onClick={() => { Navigate(`/services/${element._id}`) }}>Get more info</Button>
                                     </div>
                                 </div>
+                            </div>
 
-                            </>)
-                        })}
-                    </div>
+                        </>)
+                    })}
                 </div>
-            </div><FooterMain></FooterMain>
-        </>)
-    }
+            </div>
+        </div><FooterMain></FooterMain>
+    </>)
+}
 }
 
 export default ServicesPage
