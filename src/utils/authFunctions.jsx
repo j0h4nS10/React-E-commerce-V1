@@ -27,7 +27,7 @@ export const getLocalStorageToken = () => {
 }
 
 
-
+/*
 export const postUser = async (data, setData) => {
     try {
         const response = await axios.post('https://simple-server-ochre.vercel.app/register', data);

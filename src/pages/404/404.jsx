@@ -18,6 +18,7 @@ const Pagenotfound = () => {
         <div className="py-5">
           <h1 className="display-5 fw-bold">Oppsss</h1>
           <p className="">Error 404 you might not be here.</p>
+          <p className="">Remember you must Login to use the whole website</p>
           <button onClick={() => { Navigate('/home') }} className="btn btn-primary btn-lg" 
           type="button">Go Home</button>
         </div>

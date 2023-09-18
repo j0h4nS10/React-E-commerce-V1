@@ -65,8 +65,8 @@ const Signup = () => {
                         const response = await signupUser(formValue)
                         {
                             (localStorage.getItem('token')) ?
-                                navigate("/")
-                                : console.log("error")
+                            navigate("/")
+                            : console.log("error")
                         }
                         console.log(signupUser)
                     }}>Submit</Button>

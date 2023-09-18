@@ -1,12 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import HeaderCompany from '../HeaderCompany/HeaderCompany';
 import NavbarMain from '../NavbarMain/NavbarMain';
+import AsideMenu from "../AsideMenu/AsideMenu";
 import FooterMain from '../FooterMain/FooterMain';
 import { useParams } from "react-router-dom";
-
+import { CartContext } from "../../context/CartContext";
 
 const MyProfile = () => {
+
+    // Nav Bars
+    const [expanded, setExpanded] = useState(false);
+    //offcanvas
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    // cart use Context
+    const { cart, setMyCart } = useContext(CartContext);
 
     const [datauser, setDatauser] = useState({});
     const params = useParams();
@@ -26,7 +36,8 @@ const MyProfile = () => {
      
 
     return (<><HeaderCompany></HeaderCompany>
-        <NavbarMain></NavbarMain>
+    <NavbarMain setExpanded={setExpanded} expanded={expanded} handleShow={handleShow} companyName="Company" />
+    <AsideMenu show={show} handleClose={handleClose} placement="end" name="end" cart={cart}></AsideMenu>
         <div className="container">
             <div className="containercenter">
                 <div className="row row-cols-4 mt-5">

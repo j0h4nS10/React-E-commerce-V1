@@ -1,5 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Profile_pictures from '../../assets/profile_picture.jpg'
+
 
 function OutTeamMain() {
 
@@ -7,17 +9,17 @@ function OutTeamMain() {
         name: "juan pablo",
         profetion: "constructor",
         experience: "soy constructor con experiencia de mas de 20 años en el sector de la construccion",
-        img: "https://imgs.search.brave.com/WPLJR6VWvjI-McVml-2deHQ_O_63gc1ujo9CJ0IUmz0/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNTMw/NTg1NjUxL2VzL2Zv/dG8vcGFzYXBvcnRl/LWltYWdlbi1kZS11/bi1pdGFsaWFuby1t/dWplci1ydWJpYS1j/b24tcGVsby1sYXJn/by5qcGc_cz02MTJ4/NjEyJnc9MCZrPTIw/JmM9eDlCN0xSLTFO/QTZoUEZrVWo0SXlJ/Z0lmTnVRMl9OeERI/NndlYzkwdF82WT0"
+        img: Profile_pictures
     }, {
         name: "juan pablo",
         profetion: "constructor",
         experience: "soy constructor con experiencia de mas de 20 años en el sector de la construccion",
-        img: "https://imgs.search.brave.com/WPLJR6VWvjI-McVml-2deHQ_O_63gc1ujo9CJ0IUmz0/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNTMw/NTg1NjUxL2VzL2Zv/dG8vcGFzYXBvcnRl/LWltYWdlbi1kZS11/bi1pdGFsaWFuby1t/dWplci1ydWJpYS1j/b24tcGVsby1sYXJn/by5qcGc_cz02MTJ4/NjEyJnc9MCZrPTIw/JmM9eDlCN0xSLTFO/QTZoUEZrVWo0SXlJ/Z0lmTnVRMl9OeERI/NndlYzkwdF82WT0"
+        img: Profile_pictures
     }, {
         name: "juan pablo",
         profetion: "constructor",
         experience: "soy constructor con experiencia de mas de 20 años en el sector de la construccion",
-        img: "https://imgs.search.brave.com/WPLJR6VWvjI-McVml-2deHQ_O_63gc1ujo9CJ0IUmz0/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNTMw/NTg1NjUxL2VzL2Zv/dG8vcGFzYXBvcnRl/LWltYWdlbi1kZS11/bi1pdGFsaWFuby1t/dWplci1ydWJpYS1j/b24tcGVsby1sYXJn/by5qcGc_cz02MTJ4/NjEyJnc9MCZrPTIw/JmM9eDlCN0xSLTFO/QTZoUEZrVWo0SXlJ/Z0lmTnVRMl9OeERI/NndlYzkwdF82WT0"
+        img: Profile_pictures
     }]
 
 

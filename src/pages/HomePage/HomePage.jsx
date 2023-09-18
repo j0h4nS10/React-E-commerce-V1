@@ -44,7 +44,6 @@ const HomePage = () => {
     const { token, setMyToken } = useContext(AuthContext);
     const { cart, setMyCart } = useContext(CartContext);
 
-
     return (<>
         <HeaderCompany />
         <NavbarMain setExpanded={setExpanded} expanded={expanded} handleShow={handleShow} companyName="Company" />

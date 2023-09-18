@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
+import { AiOutlineLogin, AiOutlineLogout, AiOutlineShoppingCart } from "react-icons/ai";
 
 function NavbarMain({ setExpanded, expanded, handleShow, companyName }) {
 
@@ -29,7 +30,7 @@ function NavbarMain({ setExpanded, expanded, handleShow, companyName }) {
         <Container fluid style={{ width: "90%" }}>
           <Navbar.Brand href="/home" style={{ order: "-2" }}>{companyName}</Navbar.Brand>
           <div>
-            <Button variant="primary" onClick={handleShow} className="me-2">Cart</Button>
+            <Button variant="primary" onClick={handleShow} className="me-2"><AiOutlineShoppingCart/></Button>
             <Navbar.Toggle aria-controls="navbarScroll" onClick={() => setExpanded(expanded ? false : "expanded")} />
           </div>
           <Navbar.Collapse id="navbarScroll" style={{ order: expanded ? "1" : "-1" }}>
@@ -61,8 +62,10 @@ function NavbarMain({ setExpanded, expanded, handleShow, companyName }) {
               aria-label="Search"
             />
             <Button variant="outline-success">Search</Button>
-</Form>*/}<Nav>{token ? <Button title='Sign Out' variant="danger" onClick={()=>{localStorage.clear(); navigate("/")}}>Sign Out</Button> :
-              <Button title='Log In' as={Link} to='/login'>Log In</Button>}
+</Form>*/}<Nav>{token ? <Button title='Sign Out' variant="danger" onClick={()=>{
+  localStorage.clear()
+  navigate('/')}}><AiOutlineLogout/></Button> :
+              <Button title='Log In' as={Link} to='/login'><AiOutlineLogin/></Button>}
               {token ? <Button title='My Profile' as={Link} to={"/myprofile/" + userId}>My Profile</Button> :
                 <Button title='Sign Up' as={Link} to='/signup'>Sign Up</Button>}
             </Nav>

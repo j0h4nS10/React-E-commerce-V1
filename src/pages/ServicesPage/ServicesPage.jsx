@@ -39,15 +39,16 @@ function ServicesPage() {
                 console.log(findProduct)
                 setSelectProduct(findProduct)
             }
-        }, [])
+            findInArray()
+        }, [params])
 
     const Navigate = useNavigate();
 
     console.log("parametros", params)
 
     console.log("productos", products)
-    //console.log(params, paramstyped)
-    if (params) { 
+    
+    if (params && selectProduct) { 
 
     //console.log(findInArray)
     return (<><HeaderCompany />
@@ -97,8 +98,7 @@ function ServicesPage() {
                                         <p>{element.price}</p>
                                     </div>
                                     <div className="align-items-end">
-
-                                        <Button onClick={() => { Navigate(`/services/${element._id}`) }}>Get more info</Button>
+                                        <Button variant="primary" as={Link} to={"/services/"+element._id}>Show more</Button><br />
                                     </div>
                                 </div>
                             </div>
