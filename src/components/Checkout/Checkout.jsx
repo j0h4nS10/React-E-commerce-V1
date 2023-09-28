@@ -35,7 +35,7 @@ const Checkout = () => {
     const listCart = () => {
         const productObject = listProductObject();
 
-        return (<><Table striped bordered hover variant="dark">
+        return (<><Table striped bordered hover>
             <thead>
                 <tr>
                     <th>Img</th>

@@ -43,7 +43,8 @@ function Login() {
               console.log(email, password)
               const response = await loginUser({ email: email, password: password });
               {(localStorage.getItem('token')) ?
-              navigate("/")
+              //navigate("/")
+              window.location.href= "/home"
               : console.log("error")}
             }}>Submit</Button>
           </Form>

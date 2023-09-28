@@ -3,7 +3,7 @@ import '../../assets/react.svg'
 function HeaderCompany() {
 
     return (<>
-        <div id="HeaderCompany" className='fluid' style={{margin: "0 auto", background: "blue"}}>
+        <div id="HeaderCompany" className='fluid' style={{margin: "0 auto", background: "#E0E0E0"}}>
             <div className='centercontainer' style={{background: ""}}>
                 <div className='row' style={{width: "80%", height: 100, margin: "0 auto"}}>
                 <div className="col" style={{width: "50%"}}>

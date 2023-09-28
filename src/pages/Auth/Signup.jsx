@@ -65,7 +65,7 @@ const Signup = () => {
                         const response = await signupUser(formValue)
                         {
                             (localStorage.getItem('token')) ?
-                            navigate("/")
+                            window.location.href= "/home"
                             : console.log("error")
                         }
                         console.log(signupUser)

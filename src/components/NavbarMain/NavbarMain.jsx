@@ -6,6 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { AiOutlineLogin, AiOutlineLogout, AiOutlineShoppingCart } from "react-icons/ai";
+import { clearUser } from '../../services/auth';
 
 function NavbarMain({ setExpanded, expanded, handleShow, companyName }) {
 
@@ -63,10 +64,11 @@ function NavbarMain({ setExpanded, expanded, handleShow, companyName }) {
             />
             <Button variant="outline-success">Search</Button>
 </Form>*/}<Nav>{token ? <Button title='Sign Out' variant="danger" onClick={()=>{
-  localStorage.clear()
-  navigate('/')}}><AiOutlineLogout/></Button> :
+  //localStorage.clear(),navigate('/')
+  clearUser()
+}}><AiOutlineLogout/></Button> :
               <Button title='Log In' as={Link} to='/login'><AiOutlineLogin/></Button>}
-              {token ? <Button title='My Profile' as={Link} to={"/myprofile/" + userId}>My Profile</Button> :
+              {token ? <Button title='My Profile' href={"/myprofile/" + userId}>My Profile</Button> :
                 <Button title='Sign Up' as={Link} to='/signup'>Sign Up</Button>}
             </Nav>
           </Navbar.Collapse>

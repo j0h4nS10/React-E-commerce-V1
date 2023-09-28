@@ -28,3 +28,13 @@ export const signupUser = async (formValue) => {
         console.log(error);
     }
 };
+
+
+export const clearUser = async () => {
+  try {
+    const clearlocalstorage = await localStorage.clear();
+    window.location.href= "/home"
+  } catch (error){
+
+  }
+}
